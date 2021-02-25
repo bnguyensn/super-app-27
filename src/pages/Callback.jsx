@@ -23,11 +23,10 @@ export default function CallbackPage() {
     }
   }, [data, authDispatch]);
 
-  React.useEffect(() => {
-    if (authState.token) {
-      void navigate('/');
-    }
-  }, [authState.token])
+  if (authState.token) {
+    return <Redirect to="/" noThrow />
+  } else {
+      return <div>Please wait, redirecting you back to the app...</div>
+  }
 
-  return <div>Please wait, redirecting you back to the app...</div>
 }
